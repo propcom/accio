@@ -1,0 +1,8 @@
+{
+    "name": "propcom/accio",
+    "autoload": {
+        "psr-4" : {
+            "Propcom\\Accio\\" : "src"
+        }
+    }
+}
