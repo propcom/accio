@@ -4,5 +4,6 @@
         "psr-4" : {
             "Propcom\\Accio\\" : "src"
         }
-    }
+    },
+    "bin": ["src/bin/accio"]
 }
