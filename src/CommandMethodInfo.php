@@ -8,7 +8,6 @@ class CommandMethodInfo
 
 	private $class;
 	private $name;
-	private $usage;
 
 	public function __construct(CommandClassInfo $class, string $method)
 	{
@@ -37,8 +36,8 @@ class CommandMethodInfo
 
 		$comment = substr($docblock, 3, strpos($docblock, '@') - 3);
 		$comment = str_replace(['\r\n', '\n\r', '\r'], '\n', $comment);
-		$comment = preg_replace('/(^|\n)\s*\* ?/',  '$1', $comment);
-		$comment = preg_replace('/\h+($|\n)/',  '$1', $comment);
+		$comment = preg_replace('/(^|\n)\s*\* ?/', '$1', $comment);
+		$comment = preg_replace('/\h+($|\n)/', '$1', $comment);
 
 		preg_match('/^(.+)\v\v(.*)$/suU', $comment, $matches);
 		$usage = str_replace("\n", ' ', $matches[1]);

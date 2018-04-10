@@ -1,7 +1,7 @@
 <?php
+declare(strict_types=1);
 
 namespace Propcom\Accio;
-
 
 class Accio
 {
@@ -19,6 +19,6 @@ class Accio
 	public function run(CliInput $input, CliOutput $output = null)
 	{
 		$command = $this->command_router->route($input);
-		$result = $this->command_router->execute($command, $input, $output);
+		return $this->command_router->execute($command, $input, $output);
 	}
 }

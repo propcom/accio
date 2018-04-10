@@ -47,5 +47,4 @@ class HelloCommand
 	{
 		return $input->getOptionValue('name', 'nameless person') ?: 'World';
 	}
-
 }

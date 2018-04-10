@@ -73,13 +73,13 @@ class CliInput
 		return $this->command;
 	}
 
-	private function setFlag($name)
+	private function setFlag(string $name): void
 	{
 		if (array_key_exists($name, $this->flags)) {
-			$this->flags[$name]++;
-		} else {
-			$this->flags[$name] = 1;
+			$this->flags[$name] = 0;
 		}
+
+		$this->flags[$name]++;
 	}
 
 	public function getFlag(string $long_name, string $short_name = ''): int
@@ -126,7 +126,7 @@ class CliInput
 	public function getArgument(int $position): string
 	{
 		if (count($this->arguments) < $position) {
-			throw new MissingArgumentException('Too few arguments were passed, expected at least ' . $position . ' arguments');
+			throw new MissingArgumentException('Too few arguments were passed, expected at least ' . $position);
 		}
 
 		return $this->arguments[$position];
@@ -153,8 +153,10 @@ class CliInput
 		return readline($prompt);
 	}
 
-	public function userChoice(array $options, string $prompt = 'Please choose one of the above options by entering the corresponding number: '): int
-	{
+	public function userChoice(
+		array $options,
+		string $prompt = 'Please choose one of the above options by entering the corresponding number: '
+	): int {
 		if (array_values($options) !== $options) {
 			throw new \InvalidArgumentException('Options array must be an indexed array');
 		}
@@ -171,7 +173,11 @@ class CliInput
 			echo PHP_EOL;
 
 			$answer = $this->userInput($prompt);
-			$answer = filter_var($answer, FILTER_VALIDATE_INT, ['options' => ['default' => 0, 'min_range' => 1, 'max_range' => count($options)]]);
+			$answer = filter_var(
+				$answer,
+				FILTER_VALIDATE_INT,
+				['options' => ['default' => 0, 'min_range' => 1, 'max_range' => count($options)]]
+			);
 
 			if (!$answer) {
 				echo "Invalid option" . PHP_EOL;

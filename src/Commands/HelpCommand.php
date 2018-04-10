@@ -56,18 +56,4 @@ class HelpCommand
 
 		return 0;
 	}
-
-	private function getUsage(string $class_name, string $method)
-	{
-		$reflector = new ReflectionClass($class_name);
-		$docblock = $reflector->getMethod($method)->getDocComment();
-
-		if ($docblock !== false) {
-			$docblock = explode("@", $docblock)[0];
-			$docblock = ltrim(rtrim($docblock, '*/'), "/**");
-			$docblock = trim(str_replace('*', '', $docblock));
-		}
-
-		return $docblock;
-	}
 }

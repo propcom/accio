@@ -99,8 +99,8 @@ class CommandClassInfo
 
 		$comment = substr($docblock, 3, (strpos($docblock, '@')) - 3);
 		$comment = str_replace(['\r\n', '\n\r', '\r'], '\n', $comment);
-		$comment = preg_replace('/(^|\n)\s*\* ?/',  '$1', $comment);
-		$comment = preg_replace('/\h+($|\n)/',  '$1', $comment);
+		$comment = preg_replace('/(^|\n)\s*\* ?/', '$1', $comment);
+		$comment = preg_replace('/\h+($|\n)/', '$1', $comment);
 
 		preg_match('/^(.+)(?:\v\v(.*))?$/suU', $comment, $matches);
 		$matches = array_pad($matches, 3, '');

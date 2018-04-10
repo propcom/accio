@@ -108,17 +108,4 @@ class CommandRouter
 
 		throw new \RuntimeException('Could not load command class');
 	}
-
-	/**
-	 * Validate that a command method exists on a command class
-	 *
-	 * @param string $fq_class Fully qualified command class name
-	 * @param string $method Command method
-	 *
-	 * @return bool
-	 */
-	private function validateCommand(string $fq_class, string $method): bool
-	{
-		return method_exists($fq_class, $method);
-	}
 }
