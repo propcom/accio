@@ -6,7 +6,7 @@ if (PHP_SAPI !== 'cli') {
 
 require __DIR__.'/../../../autoload.php';
 
-$command_router = new \Propcom\Accio\CommandRouter([__DIR__.'/../' => 'Testing']);
+$command_router = new \Propcom\Accio\CommandRouter();
 
 $input = new \Propcom\Accio\CliInput($argv);
 $output = new \Propcom\Accio\CliOutput();
