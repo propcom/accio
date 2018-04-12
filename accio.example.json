@@ -1,0 +1,6 @@
+{
+  "app_bootstrap": "src/bootstrap.php",
+  "directories": {
+    "src/Infrastructure/Delivery/Cli/Commands/": "Infrastructure\\Delivery\\Cli\\Commands"
+  }
+}

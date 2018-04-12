@@ -5,9 +5,12 @@ if (PHP_SAPI !== 'cli') {
 	throw new \Exception("Only invoke this from the CLI");
 }
 
-require __DIR__.'/../../../autoload.php';
+require_once __DIR__.'/../../../../autoload.php';
 
-$command_router = new \Propcom\Accio\CommandRouter();
+$config = new \Propcom\Accio\Config('accio.json');
+$config->bootstrap();
+
+$command_router = new \Propcom\Accio\CommandRouter($config->getDirectories());
 
 $input = new \Propcom\Accio\CliInput($argv);
 $output = new \Propcom\Accio\CliOutput();
