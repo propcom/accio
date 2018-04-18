@@ -6,17 +6,9 @@ namespace Propcom\Accio;
 class Config
 {
 
-	private	$validation_rules = [
-		'directories' => [
-			'filter' => FILTER_DEFAULT,
-			'flags' => FILTER_REQUIRE_ARRAY,
-		],
-		'app_bootstrap' => [
-			'filter' => FILTER_DEFAULT,
-			'flags' => FILTER_REQUIRE_SCALAR,
-		],
-	];
-
+	/**
+	 * @var array
+	 */
 	private $data;
 
 	public function __construct(string $config_filepath)
@@ -29,7 +21,7 @@ class Config
 		}
 	}
 
-	public function load($filepath)
+	public function load(string $filepath): array
 	{
 		if (!is_file($filepath)) {
 			throw new \RuntimeException('Can\'t find config file');
@@ -48,7 +40,7 @@ class Config
 		return $this->validate($data);
 	}
 
-	public function validate($data)
+	public function validate(array $data): array
 	{
 		if (!array_key_exists('directories', $data)) {
 			throw new \RuntimeException('Accio config must include the "directories" key');
